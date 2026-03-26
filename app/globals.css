@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+.glass-card {
+  @apply bg-white/90 backdrop-blur-sm border border-gray-300 rounded-2xl shadow-sm;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  @apply shadow-md border-gray-400;
+  transform: translateY(-1px);
+}
+
+.grid > .glass-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, rgb(209 213 219), transparent);
+  opacity: 0.4;
+}
+
+.space-y-3 > .glass-card:not(:last-child),
+.space-y-4 > .glass-card:not(:last-child) {
+  border-bottom: 1px solid rgb(209 213 219 / 0.3);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid > .glass-card:not(:last-child)::after {
+    display: none;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark .glass-card {
+  @apply bg-gray-800/90 border-gray-600;
+}
+
+.dark .glass-card:hover {
+  @apply border-gray-500;
+}
+
+.dark .grid > .glass-card:not(:last-child)::after {
+  background: linear-gradient(to bottom, transparent, rgb(75 85 99), transparent);
+}
+
+.dark .space-y-3 > .glass-card:not(:last-child),
+.dark .space-y-4 > .glass-card:not(:last-child) {
+  border-bottom: 1px solid rgb(75 85 99 / 0.3);
+}
+
+/* Fix font colors and text visibility */
+.text-foreground {
+  color: rgb(17 24 39);
+}
+
+.text-muted-foreground {
+  color: rgb(107 114 128);
+}
+
+.dark .text-foreground {
+  color: rgb(243 244 246);
+}
+
+.dark .text-muted-foreground {
+  color: rgb(156 163 175);
+}
+
+/* Sidebar improvements */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Sidebar background and text colors */
+.bg-sidebar-bg {
+  background: rgb(248 250 252) ;
+  border-right: 1px solid rgb(229 231 235) ;
+}
+
+.dark .bg-sidebar-bg {
+  background: linear-gradient(135deg, rgb(17 24 39) 0%, rgb(31 41 55) 100%) ;
+}
+
+.text-sidebar-fg {
+  color: rgb(55 65 81) ;
+}
+
+.bg-sidebar-active {
+  background: rgba(75, 75, 75, 0.241) ;
+}
+
+.dark .bg-sidebar-active {
+  background: rgb(55 65 81) ;
+}
+
+/* Ensure sidebar text is always visible */
+aside span, aside button {
+  color: rgb(55 65 81) ;
+}
+
+.dark aside span, .dark aside button {
+  color: rgb(243 244 246) ;
+}
+
+/* Specific fix for header text */
+aside h1, aside p {
+  color: rgb(17 24 39) ;
+}
+
+.dark aside h1, .dark aside p {
+  color: rgb(243 244 246) ;
+}
+
+/* Sidebar borders */
+aside .border-white\/10 {
+  border-color: rgb(229 231 235) ;
+}
+
+.dark aside .border-white\/10 {
+  border-color: rgb(75 85 99 / 0.3) ;
+}
+
+/* Main content background */
+.bg-background {
+  background: rgb(249 250 251) ;
+}
+
+.dark .bg-background {
+  background: rgb(17 24 39) ;
+}
+
+/* Dark mode card backgrounds */
+.dark .bg-card {
+  background: rgb(31 41 55) ;
+}
+
+.dark .bg-secondary {
+  background: rgb(55 65 81) ;
+}
+
+.dark .border-border {
+  border-color: rgb(75 85 99) ;
+}
+
+/* Dark mode table styles */
+.dark table {
+  color: rgb(243 244 246) ;
+}
+
+.dark .hover\:bg-secondary\/30:hover {
+  background: rgb(55 65 81 / 0.3) ;
+}
