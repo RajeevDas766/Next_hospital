@@ -1,13 +1,15 @@
+"use client"
+
 import { useState, useEffect, useRef } from "react"
-import { stats, appointments, quickStats } from "./Demo"
+import { stats, appointments, quickStats, Stat, Appointment, QuickStat } from "./Demo"
 
 // Animated counter hook (inline)
-function useCounter(target, duration = 1200) {
+function useCounter(target: number, duration = 1200): number {
   const [count, setCount] = useState(0)
   const raf = useRef(0)
   useEffect(() => {
-    let start = null
-    const step = (ts) => {
+    let start: number | null = null
+    const step = (ts: number) => {
       if (!start) start = ts
       const p = Math.min((ts - start) / duration, 1)
       setCount(Math.floor((1 - Math.pow(1 - p, 3)) * target))
@@ -19,7 +21,7 @@ function useCounter(target, duration = 1200) {
   return count
 }
 
-function StatCard({ title, value, change, icon, gradient }) {
+function StatCard({ title, value, change, icon, gradient }: Stat) {
   const animated = useCounter(value)
   const isPositive = change.startsWith("+")
   return (
@@ -41,7 +43,7 @@ export default function Overview() {
     <div className="space-y-6">
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((s) => <StatCard key={s.title} {...s} />)}
+        {stats.map((s: Stat) => <StatCard key={s.title} {...s} />)}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -49,11 +51,11 @@ export default function Overview() {
         <div className="glass-card p-5">
           <h3 className="text-base font-bold text-foreground mb-4">Today's Appointments</h3>
           <div className="space-y-3">
-            {appointments.map((a, i) => (
+            {appointments.map((a: Appointment, i: number) => (
               <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
-                    {a.patient.split(" ").map(n => n[0]).join("")}
+                    {a.patient.split(" ").map((n: string) => n[0]).join("")}
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground">{a.patient}</p>
@@ -73,7 +75,7 @@ export default function Overview() {
         <div className="glass-card p-5">
           <h3 className="text-base font-bold text-foreground mb-4">Quick Stats</h3>
           <div className="space-y-4">
-            {quickStats.map((item) => (
+            {quickStats.map((item: QuickStat) => (
               <div key={item.label}>
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-muted-foreground">{item.label}</span>

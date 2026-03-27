@@ -1,10 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import Layout from './Layout.tsx'
+import Layout from "./layout"
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Layout />
-  </StrictMode>,
-)
+export default function Home() {
+  return <Layout />
+}
