@@ -26,7 +26,7 @@ export default function Layout() {
   const [collapsed, setCollapsed] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
-  const navigate = useCallback((p) => setPage(p), [])
+  const navigate = useCallback((p: string) => setPage(p), [])
 
   useEffect(() => {
     if (darkMode) {
