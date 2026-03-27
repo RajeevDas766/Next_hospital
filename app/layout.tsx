@@ -14,7 +14,7 @@ const menu = [
   { id: "departments", label: "Departments", icon: "🏢" },
 ]
 
-const titles = {
+const titles: { [key: string]: string } = {
   overview: "Dashboard Overview",
   patients: "Patient Management",
   analytics: "Analytics & Reports",
